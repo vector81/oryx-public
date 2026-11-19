@@ -1,0 +1,57 @@
+export type Entity = "me" | "business-one" | "business-two" | "all";
+export type Account = {
+  id: string;
+  name: string;
+  entity: Entity;
+  type: string;
+  last4: string;
+  active: number;
+  provider_id: string | null;
+  synced_at: string | null;
+};
+export type Transaction = {
+  id: string;
+  account_id: string;
+  date: string;
+  amount_cents: number;
+  raw_description: string;
+  merchant: string;
+  category_id: string;
+  person_id: string | null;
+  trip_id: string | null;
+  note: string;
+  kind: "income" | "spend" | "transfer" | "debt";
+  reimbursable: number;
+  reimbursed: number;
+  parent_id: string | null;
+  source: string;
+  currency: string;
+  reviewed: number;
+  account?: string;
+  entity?: Entity;
+  category?: string;
+};
+export type Category = { id: string; name: string };
+export type Rule = {
+  id: string;
+  pattern: string;
+  merchant: string | null;
+  category_id: string | null;
+  person_id: string | null;
+  kind: Transaction["kind"] | null;
+  entity: string | null;
+};
+export type Debt = {
+  id: string;
+  name: string;
+  entity: string;
+  start_cents: number;
+  balance_cents: number;
+  payment_cents: number;
+  payment_every: string;
+  currency: string;
+  note: string;
+  annual_minimum_cents: number | null;
+  next_due: string | null;
+  fx_aud: number;
+};

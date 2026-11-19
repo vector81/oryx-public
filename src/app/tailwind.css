@@ -1,0 +1,10 @@
+/* Keep ORYX's existing base styles; enable Tailwind without its global reset. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@theme inline {
+  --color-background: var(--page);
+  --color-foreground: var(--ink);
+  --color-muted-foreground: var(--muted);
+}
